@@ -66,7 +66,7 @@ When entered correctly, a sound will play and the text "KONAMI CODE IS ACTIVATE"
 
 ## Level Editor
 
-[The level editor](images/puredit.png)
+![The level editor](images/puredit.png)
 
 There is one (puredit.exe). I remember it being kind of unstable and don't really remember anything about it.
 
