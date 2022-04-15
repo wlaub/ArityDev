@@ -70,3 +70,59 @@ When entered correctly, a sound will play and the text "KONAMI CODE IS ACTIVATE"
 
 There is one (puredit.exe). I remember it being kind of unstable and don't really remember anything about it.
 
+# Misc
+
+## Code blocks
+
+Shortly before I started this game there was a little coding challenge on an indie game dev forum I was active on. The goal was to fix the source code of a game inside 80 by 24 characters. I submitted two entries that informed this game. The executables have been lost to time, but the code hasn't.
+
+One was a bullet hell platformer where you had to use unlimited double jumps to reach the top of the screen without getting hit by projectiles
+```
+#include <cstdlib>  /*    M     *    **    *   *    * *   *   *     *   *    */
+#include <iostream> /*   /|\  *  *  *    **  * * * *   * *   ** * *   *  **  */
+#include <cmath>    /*  / | \   * *   *  *  **  *   *  *  *  **   *  o. *  * */
+#include <SDL.h>    /* /__|__\     *   *  *    *    ***    **   * *   :* **  */
+using namespace std;SDL_Surface* s;typedef struct{float h,xp,yp,xv,yv;}b;void d
+(int xp,int yp,Uint32 color){*((Uint32 *)s->pixels+yp*s->pitch/4+xp)=color;}int
+main(int argc,char *argv[]){b c,a[192];long st,sc,bn,e,x,y;e=0;bn=0;c.h=10;c.xp
+=160;c.yp=238;SDL_Init(32);s=SDL_SetVideoMode(320,240,32,0x40000001);SDL_Event 
+event;Uint8* keys;st=clock();while(e==0){keys=SDL_GetKeyState(NULL);
+SDL_PollEvent(&event);if(keys[SDLK_ESCAPE])e=1;c.xv=0;if(keys[SDLK_LEFT])c.xv=-
+1.5;if(keys[SDLK_RIGHT])c.xv=1.5;if(keys[SDLK_SPACE]&&c.yv<10){c.yv=-2;keys[
+SDLK_SPACE]=0;};if(bn<191){++bn;a[bn].yp=3;a[bn].xp=rand()%320;a[bn].xv=.6*rand
+()/(float)RAND_MAX-.3;a[bn].yv=.3*rand()/(float)RAND_MAX;}for(x=0;x<320;++x)for
+(y=0;y<240;++y)d(x,y,0);c.xp+=c.xv;if(c.xp<0||c.xp>319){c.xp-=c.xv;c.xv=0;}c.yv
++=.08;c.yp+=c.yv;if(c.yp>239){c.yp=239;c.yv=0;}if(c.yp<3){c.yp = 3;c.yv=10;st-=
+1000;}for(x=0;x<bn;++x){a[x].xp+=a[x].xv;a[x].yp+=a[x].yv;if(a[x].xp<0||a[x].xp
+>319){a[x].xv*=-1;a[x].xp+=2*a[x].xv;}if(a[x].yp<3||a[x].yp>239){a[x].yv*=-1;a[
+x].yp+=2*a[x].yv;}if(abs(c.xp-a[x].xp)<=1&&abs(c.yp-a[x].yp)<=1)--c.h;a[x].xv*=
+1.001;a[x].yv*=1.001;d(a[x].xp,a[x].yp,16711680);}d(c.xp,c.yp,2147483647);for(x
+=0;x<c.h*32;++x)d(1+x,1,65280);st-=(239-c.yp)/16;sc=clock()-st;if(c.h<1)e=1;
+SDL_Flip(s);SDL_Delay(16);}cout<<"sc = "<<sc<<endl;}
+```
+
+The second was a platformer with regular jump mechanics and falling platforms the player had to use to reach the top of the screen... 4 times.
+```
+#include <cstdlib>  /*    M         ___                                       */ 
+#include <iostream> /*   /|\                      ___                         */ 
+#include <cmath>    /*  / | \          ___                o.                  */ 
+#include <SDL.h>    /* /__|__\                             :     ___          */ 
+using namespace std;SDL_Surface* s;typedef struct{float h,xp,yp,xv,yv;}b;void d( 
+int xp,int yp,Uint32 color){*((Uint32 *)s->pixels+yp*s->pitch/4+xp)=color;}int  
+main(int argc,char *argv[]){b c,a[9];long st,sc,bn,e,x,i,y,g;e=0;bn=0;c.h=4;c.xp 
+=160;c.yp=238;SDL_Init(32);s=SDL_SetVideoMode(320,240,32,0x40000001);SDL_Event  
+event;Uint8* keys;st=clock();while(e==0){keys=SDL_GetKeyState(NULL); 
+SDL_PollEvent(&event);if(keys[SDLK_ESCAPE])e=1;c.xv=0;if(keys[SDLK_LEFT])c.xv=-3 
+;if(keys[SDLK_RIGHT])c.xv=3;if(keys[SDLK_SPACE]&&g){c.yv=-5;keys[SDLK_SPACE]=0; 
+srand(clock());}g=0;if(bn<8&&clock()>1250*bn){++bn;a[bn].yp=3;a[bn].xp=10+rand() 
+%300;}for(x=0;x<320;++x)for(y=0;y<240;++y)d(x,y,0);c.xp+=c.xv;if(c.xp<0||c.xp> 
+319){c.xp-=c.xv;c.xv=0;}if(!g)c.yv+=.2;c.yp+=c.yv;if(c.yp>239){c.yp=239;c.yv=0;g 
+=1;}if(c.yp<3){c.yp = 3;c.yv=10;--c.h;}for(x=0;x<bn;++x){a[x].yp+=.5;if(a[x].yp> 
+239)if(a[x].yp>239){a[x].yp=3;a[x].xp=10+rand()%300;}if(c.yp>a[x].yp&&(c.yp-c.yv 
+)<a[x].yp&&abs(c.xp-a[x].xp)<=9){c.yv=.5;c.yp=a[x].yp-1;g=1;}for(i=0;i<18;++i)if 
+(a[x].xp-9+i>=0&&a[x].xp-9+i<320)d(a[x].xp-9+i,a[x].yp,16711680);}d(c.xp,c.yp, 
+2147483647);for(x=0;x<(4-c.h)*80;++x)d(x,1,65280);sc=clock()-st;if(c.h<1)e=1; 
+SDL_Flip(s);SDL_Delay(16);}cout<<"sc = "<<sc<<endl;}
+```
+
+
