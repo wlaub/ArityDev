@@ -1,6 +1,6 @@
 ![Example room](images/first.png) ![The menu](images/map.png)
 
-This is an unfinished platformer video game inspired by such works as Seiklus, An Untitled Story, and Mole's Quest.
+This is an unfinished platformer video game inspired by such works as Seiklus, An Untitled Story, and Mole's Quest. It's not a great game, and I've documented a small subset of the issues below.
 
 The game is Arity.exe
 
