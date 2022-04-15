@@ -74,7 +74,7 @@ There is one (puredit.exe). I remember it being kind of unstable and don't reall
 
 ## Code blocks
 
-Shortly before I started this game there was a little coding challenge on an indie game dev forum I was active on. The goal was to fix the source code of a game inside 80 by 24 characters. I submitted two entries that informed this game. The executables have been lost to time, but the code hasn't.
+Shortly before I started this game there was a little coding challenge on an indie game dev forum I was active on. The goal was to fit the source code of a game inside 80 by 24 characters. I submitted two entries that informed this game. The executables have been lost to time, but the code hasn't.
 
 One was a bullet hell platformer where you had to use unlimited double jumps to reach the top of the screen without getting hit by projectiles
 ```
